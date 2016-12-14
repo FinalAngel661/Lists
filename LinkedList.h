@@ -1,4 +1,5 @@
 #pragma once
+#include <cassert>
 
 template<typename T>
 class LinkedList
@@ -118,10 +119,43 @@ public:
 	//RO5
 	LinkedList() : prev(nullptr), next(nullptr), count(0) {};
 	~LinkedList() { clear(); };
-	LinkedList(const LinkedList &);
-	LinkedList(LinkedList &&);
-	LinkedList &operator=(const LinkedList &);
-	LinkedList &operator=(LinkedList &&);
+
+	LinkedList(const LinkedList &o)
+		: prev(nullptr), next(nullptr), count(0)
+	{
+		for each(auto val in o)
+		{
+			add_back(val);
+		}
+	}
+
+	LinkedList &operator=(const LinkedList &o)
+	{
+		clear();
+		for each(autp val in o)
+			add_back(val);
+	}
+
+	LinkedList(LinkedList &&o)
+	{
+		head = o.head;
+		tail = o.tail;
+		count = o.count;
+
+		o.head = o.tail = nullptr;
+		o.count = 0;
+	}
+
+	LinkedList &operator=(LinkedList &&o)
+	{
+		clear();
+		head = o.head;
+		tail = o.tail;
+		count = o.count;
+
+		o.head = o.tail = nullptr;
+		o.count = 0;
+	}
 };
 
 
