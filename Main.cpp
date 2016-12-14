@@ -260,8 +260,6 @@ void main()
 	list.add_back(8);
 	list.add_back(7);
 
-	list.DEBUG_TEMP_PRINT();
-
 	for each(auto it = list.begin(0; it != list.end(0; it++)
 	{
 		*it = 4;
